@@ -19,7 +19,7 @@ object AuthenticationController {
    *
    * @param user account (email) and password, sample is
    * {
-   *   "email":"yun.zhang@autodesk.com",
+   *   "email":"first.last@autodesk.com",
    *   "password":"111111"
    * }
    * @return user profile or the error message
@@ -51,8 +51,8 @@ object AuthenticationController {
    *
    * @param: user profile, sample is
    *  {
-   *    "nickName":"Yun",
-   *    "email":"yun.zhang@autodesk.com",
+   *    "nickName":"nick name",
+   *    "email":"first.last@autodesk.com",
    *    "password":"111111"
    *  }
    * @return user profile or the error message
