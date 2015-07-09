@@ -1,0 +1,17 @@
+<div class="side-bar">
+    <h4 class="title">{{title}}</h4>
+
+    <div class="with-tags">
+        {{#each profiles}}
+        <a href="mailto:{{email}}" title="{{nickname}}" class="linked-img">
+            {{#if avatar}}
+            <img class="avatar" src="/images/{{avatar}}"/>
+            {{else}}
+            <img class="avatar" src="/assets/images/cover.png"/>
+            {{/if}}
+        </a>
+        {{else}}
+        <h5>No Users</h5>
+        {{/each}}
+    </div>
+</div>

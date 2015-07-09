@@ -1,0 +1,27 @@
+@(eventId: String)
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TCT Admin - Event Details</title>
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/lib/bootstrap.min.css")" />
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.css")" />
+    <script src="@routes.Assets.at("javascripts/lib/jquery.min.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("javascripts/lib/handlebars.min.js")" type="text/javascript"></script>
+</head>
+<body>
+    <nav class="container title-bar navbar">
+        <a class="brand" href="#" title="TCT Admin Console">
+            <img class="adsk-logo" src="@routes.Assets.at("images/autodesk-logo-base.png")" />
+        </a>
+    </nav>
+    <div class="events-well" id="event-details-container" data-id="@eventId">
+        <div class="row-fluid">
+            <main class="span8"></main>
+            <aside class="span4"></aside>
+        </div>
+    </div>
+    <script src="@routes.Assets.at("javascripts/handlebars.helpers.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("javascripts/event.details.js")" type="text/javascript"></script>
+</body>
+</html>

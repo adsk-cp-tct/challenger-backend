@@ -1,0 +1,248 @@
+@(eventsJson: String)(ideasJson: String)
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TCT Admin - Events</title>
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/lib/bootstrap.min.css")" />
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.css")" />
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/popup.css")" />
+    <script src="@routes.Assets.at("javascripts/lib/jquery.min.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("javascripts/lib/bootstrap.min.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("javascripts/lib/handlebars.min.js")" type="text/javascript"></script>
+</head>
+<body>
+    <nav class="container title-bar navbar">
+        <a class="brand" href="#" title="TCT Admin Console">
+            <img class="adsk-logo" src="@routes.Assets.at("images/autodesk-logo-base.png")" />
+        </a>
+    </nav>
+    <section class="row-fluid wrapper">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#tab-events">Events</a></li>
+            <li><a data-toggle="tab" href="#tab-ideas">Ideas</a></li>
+            <li><a data-toggle="tab" href="#tab-comments">Comments</a></li>
+        </ul>
+        <section class="block tab-content">
+            <article id="tab-events" class="tab-pane active">
+                <div class="navbar">
+                  <div class="navbar-inner">
+                    <a class="brand" href="#">Events Management</a>
+                    <ul class="nav">
+                      <li><a href="#create-event-dialog" data-toggle="modal" title="Click to create new event"><i class="icon-calendar"></i> Create New Event</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <table class="events-table table-condensed table table-bordered table-hover">
+                    <tr class="table-title">
+                        <th>ID</th>
+                        <th>Cover</th>
+                        <th>Title</th>
+                        <th>Posted At</th>
+                        <th>Registration Due Date</th>
+                        <th>Event Schedule</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </table>
+            </article>
+            <article id="tab-ideas" class="tab-pane">
+                <div class="navbar">
+                  <div class="navbar-inner">
+                    <a class="brand" href="#">Ideas Management</a>
+                    <ul class="nav">
+                      <li><a href="#" id="btn-unpublish-idea" title="Click to unpublish an idea"><i class="icon-remove"></i> Unpublish Idea</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <table class="ideas-table  table-condensed table table-bordered table-hover">
+                    <tr class="table-title">
+                        <th>ID</th>
+                        <th>Cover</th>
+                        <th>Title</th>
+                        <th>Text</th>
+                        <th>Like</th>
+                        <th>Following</th>
+                        <th>Actions</th>
+                    </tr>
+                </table>
+            </article>
+            <article id="tab-comments" class="tab-pane">
+                <div class="navbar">
+                  <div class="navbar-inner">
+                    <a class="brand" href="#">Comments Management</a>
+                    <ul class="nav">
+                      <li><a href="#" id="btn-unpublish-comment" title="Click to unpublish a comment"><i class="icon-remove"></i> Unpublish Comment</a></li>
+                    </ul>
+                  </div>
+                </div>
+            </article>
+        </section>
+    </section>
+    <div id="create-event-dialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Create New Event</h3>
+        </div>
+        <div class="modal-body">
+            <section class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">Project Title</label>
+                    <div class="controls">
+                        <input type="text" class="title-input span6" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Event Type</label>
+                    <div class="controls">
+                        <select class="type-input span6">
+                            <option value="brownbag">Brownbag</option>
+                            <option value="competition">Competition</option>
+                            <option value="training">Training</option>
+                            <option value="groupbuying">Group buying</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Registration Due Date</label>
+                    <div class="controls">
+                        <input class="due-input span6" step="1" type="date" /> 
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Event Schedule</label>
+                    <div class="controls controls-row">
+                        <input class="schedule-input span2" step="1" type="date" />
+                        <input class="start span2" min="8:30" max="18:30" step="1800" value="08:30" type="time" />
+                        <input class="end span2" min="8:30" max="18:30" step="1800" value="09:30" type="time" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Max Members</label>
+                    <div class="controls">
+                        <input class="max-input span6" type="text" /> 
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Location</label>
+                    <div class="controls">
+                        <input class="location-input span6" type="text"  /> 
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Presenter</label>
+                    <div class="controls">
+                        <input class="presenter-input span6" type="text"  /> 
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Upload Presenter Logo</label>
+                    <div class="controls controls-row">
+                        <form class="form-inline" id="uploadPresenterLogo" action="/image" enctype="multipart/form-data" method="POST">
+                            <label class="btn upload-input">
+                                <input name="picture" style="display:none;" type="file" onchange="$('#logo-tip').text($(this).val());" />
+                                <span id="logo-tip">Choose an image...</span>
+                            </label>
+                            <button class="upload-button btn" href="javascript:void(0);"><i class="icon-upload"></i> Upload </button>
+                            <label id="presenterLogoPath" class="label label-success hidden"><i class="icon-ok-circle icon-white"></i> Uploaded</label>
+                        </form>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Presenter Email</label>
+                    <div class="controls">
+                        <input class="presenter-email-input span6" type="text"  /> 
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Presenter Title</label>
+                    <div class="controls">
+                        <input class="presenter-title-input span6" type="text"  /> 
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Registration Policy</label>
+                    <div class="controls">
+                        <select class="policy-select span6">
+                            <option value="First Come First Served">First Come First Served</option>
+                            <option value="Random">Random</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Upload Event Image</label>
+                    <div class="controls controls-row">
+                        <form class="form-inline" id="uploadForm" action="/image" enctype="multipart/form-data" method="POST">
+                            <label class="btn upload-input">
+                                <input name="picture" style="display:none;" type="file" onchange="$('#event-img-tip').text($(this).val());" />
+                                <span id="event-img-tip">Choose an image...</span>
+                            </label>
+                            <button class="upload-button btn" href="javascript:void(0);"><i class="icon-upload"></i> Upload </button>
+                            <label id="uploadPath" class="label label-success hidden"><i class="icon-ok-circle icon-white"></i> Uploaded</label>
+                        </form>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Description</label>
+                    <div class="controls">
+                        <textarea class="des-input span6" type="text" rows="10" value=""></textarea>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+            <button class="btn btn-primary" id="btn-publish-event">Publish</button>
+        </div>
+    </div>
+</body>
+<script src="@routes.Assets.at("javascripts/handlebars.helpers.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/publishEvent.js")" type="text/javascript"></script>
+<script>
+    var defaultImg = "@routes.Assets.at("images/cover.png")"
+
+    function getThumbnail(imageName, successCallback, errorCallback) {
+        $.ajax({
+            type: 'GET',
+            url: '/thumbnail/' + imageName + '/300x200',
+            async: false,
+            dataType: "text",
+            success: function(data) {
+                successCallback(data);
+            },
+            error: function(jqxhr) {
+                if (jqxhr.status == "404") {
+                    errorCallback(defaultImg);
+                } else {
+                    console.log(jqxhr.responseText);
+                }
+            }
+        });
+    }
+
+    // List events
+    var eventJson = "@eventsJson".replace(/&quot;/g, '"');
+    var eventList = jQuery.parseJSON(eventJson).events;
+
+    for (var i = 0; i < eventList.length; i++) {
+        var event = eventList[i];
+        getThumbnail(event.thumbnail, function(imgPath) {
+            var img = "http://" + window.location.host + "/images/" + imgPath;
+            displayEvent(event, img ? img : defaultImg)
+        }, function(img) {
+            displayEvent(event, img)
+        });
+    }
+
+    // List ideas
+    var ideaJson = "@ideasJson".replace(/&quot;/g, '"');
+    var ideaList = jQuery.parseJSON(ideaJson);
+
+    for (var i = 0; i < ideaList.length; i++) {
+        var idea = ideaList[i];
+        displayIdea(idea, img);
+    }
+</script>
+
+</html>

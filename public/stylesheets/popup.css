@@ -1,0 +1,76 @@
+#pop-up{
+	position: fixed;
+	background: rgba(0,0,0,0.5);
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	z-index: 10000;
+}
+#pop-up .wrapper{
+	width: 550px;
+	height: 800px;
+	position: absolute;
+	left: 50%;
+	margin-left: -225px;
+	top: 10%;
+	margin-top: 0px;
+	background: #ffffff;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+#pop-up .wrapper div{
+    margin: 10px;
+}
+#pop-up .wrapper input {
+    position: absolute;
+    left: 180px;
+	width: 100px;
+	display: inline-block;
+}
+#pop-up .wrapper select {
+    position: absolute;
+    left: 180px;
+	width: 180px;
+	display: inline-block;
+}
+#pop-up .wrapper .title-input{
+    left: 180px;
+    width: 380px;
+}
+#pop-up .wrapper .location-input{
+    left: 180px;
+    width: 380px;
+}
+#pop-up .wrapper .presenter-input{
+    left: 180px;
+    width: 380px;
+}
+#pop-up .wrapper .presenter-email-input{
+    left: 180px;
+    width: 380px;
+}
+#pop-up .wrapper .presenter-title-input{
+    left: 180px;
+    width: 380px;
+}
+#pop-up .wrapper .start{
+    left: 290px;
+    width: 90px;
+}
+#pop-up .wrapper .end{
+    left: 400px;
+    width: 90px;
+}
+#pop-up .wrapper .des-input{
+    position: absolute;
+    width: 380px;
+    height: 100px;
+    left: 180px;
+    vertical-align: text-top;
+    text-align: left;
+}
+#pop-up .wrapper .bottom-bar{
+    position: absolute;
+    top: 20px;
+    left: 200px;
+}

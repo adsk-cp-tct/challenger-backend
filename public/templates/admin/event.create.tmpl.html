@@ -1,0 +1,14 @@
+<tr id="event-row-{{event.eventId}}">
+    <td><a href="#" onclick="showDetails(this);">{{event.eventId}}</a></td>
+    <td><img src="{{img}}" /></td>
+    <td>{{event.title}}</td>
+    <td>{{formatDate event.createdTime 10}}</td>
+    <td>{{formatDate event.expiration 10}}</td>
+    <td>{{formatDate event.startTime 16}} - {{formatDate event.endTime 16}}</td>
+    <td>{{event.category}}</td>
+    <td>{{event.applyingUserCount}} / {{event.seats}}</td>
+    <td>
+        <a class="edit func-not-implemented disabled" href="#">Edit</a>
+        <a id="{{event.eventId}}" onclick="revokeEvent(this);" href="#">Unpublish</a>
+    </td>
+</tr>

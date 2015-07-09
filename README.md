@@ -1,2 +1,4 @@
-# challenger-backend
-Backend of challenger project
+tct-challenger
+==============
+
+backend for tct

@@ -1,0 +1,67 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+#### APIs
+
+#Authentication
+POST    /signin                        com.autodesk.tct.controllers.AuthenticationController.signin
+POST    /signup                        com.autodesk.tct.controllers.AuthenticationController.signup
+
+#Event
+POST    /events                        com.autodesk.tct.controllers.EventController.createEvent
+#PUT     /events                        com.autodesk.tct.controllers.EventController.updateEvents
+GET     /events                        com.autodesk.tct.controllers.EventController.getEvents
+GET     /events/:eventId               com.autodesk.tct.controllers.EventController.getEvent(eventId)
+
+#EventAction
+POST    /users/register/event           com.autodesk.tct.controllers.EventActionController.registerEventByUser
+POST    /groups/register/event          com.autodesk.tct.controllers.EventActionController.registerEventByGroup
+POST    /unregister/event               com.autodesk.tct.controllers.EventActionController.unregisterEvent
+POST    /like/event                     com.autodesk.tct.controllers.EventActionController.likeEvent
+POST    /follow/event                   com.autodesk.tct.controllers.EventActionController.followEvent
+POST    /follow/user                    com.autodesk.tct.controllers.EventActionController.followUser
+GET     /users/:userId/applyingEvents   com.autodesk.tct.controllers.EventActionController.getApplyingEvents(userId)
+GET     /users/:userId/registeredEvents com.autodesk.tct.controllers.EventActionController.getRegisteredEvents(userId)
+GET     /users/:userId/events           com.autodesk.tct.controllers.EventActionController.getRegisteredEvents(userId)
+GET     /users/:userId/contacts         com.autodesk.tct.controllers.EventActionController.getUserContacts(userId)
+POST    /users/:userId/profile          com.autodesk.tct.controllers.EventActionController.updateUserProfile(userId)
+GET     /users/:userId/profile          com.autodesk.tct.controllers.EventActionController.getUserProfile(userId)
+DELETE  /like/event/:eventId/:likeUserId     com.autodesk.tct.controllers.EventActionController.unlikeEvent(eventId, likeUserId)
+DELETE  /follow/event/:eventId/:follower     com.autodesk.tct.controllers.EventActionController.unfollowEvent(eventId, follower)
+DELETE  /users/:userId/:follower       com.autodesk.tct.controllers.EventActionController.unfollowUser(userId, follower)
+
+#Idea Actions
+POST    /idea                           com.autodesk.tct.controllers.IdeaController.createIdea
+GET     /idea/:uuid                     com.autodesk.tct.controllers.IdeaController.getIdea(uuid)
+GET     /idea                           com.autodesk.tct.controllers.IdeaController.getIdeaList
+GET     /ideas/:uid                     com.autodesk.tct.controllers.IdeaController.getIdeaListByUser(uid)
+POST    /like/idea                      com.autodesk.tct.controllers.IdeaController.like
+POST    /follow/idea                    com.autodesk.tct.controllers.IdeaController.follow
+DELETE  /like/idea/:ideaId/:likeUserId  com.autodesk.tct.controllers.IdeaController.unlike(ideaId, likeUserId)
+DELETE  /follow/idea/:ideaId/:follower  com.autodesk.tct.controllers.IdeaController.unfollow(ideaId, follower)
+
+#Comment
+POST    /comment                        com.autodesk.tct.controllers.CommentController.createComment
+DELETE  /comment/:commentId             com.autodesk.tct.controllers.CommentController.deleteComment(commentId)
+
+#Admin site
+GET     /                               com.autodesk.tct.controllers.admin.AdminController.index()
+POST    /admin/login                    com.autodesk.tct.controllers.admin.AdminController.login()
+
+GET     /admin/events                   com.autodesk.tct.controllers.admin.EventsController.index()
+GET     /admin/events/:eventId          com.autodesk.tct.controllers.admin.EventsController.getEvent(eventId)
+DELETE  /admin/events/:eventId          com.autodesk.tct.controllers.admin.EventsController.deleteEvent(eventId)
+
+GET  /activities                        com.autodesk.tct.controllers.ActivityController.getActivityList
+
+POST   /image                           com.autodesk.tct.controllers.ImageController.uploadImage
+GET    /thumbnail/:fileName/:size       com.autodesk.tct.controllers.ImageController.getThumbnail(fileName, size)
+GET    /thumbnail/:fileName/:size/file  com.autodesk.tct.controllers.ImageController.getThumbnailStream(fileName, size)
+GET    /images/*file                    com.autodesk.tct.controllers.ImageController.at(file)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+#Notification
+POST    /token                          com.autodesk.tct.controllers.NotificationController.post
+DELETE  /token/:userId                  com.autodesk.tct.controllers.NotificationController.delete(userId)

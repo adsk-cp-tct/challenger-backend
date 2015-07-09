@@ -1,0 +1,143 @@
+body {
+    font-size: 0.75em;
+    background-color: #fff;
+}
+
+.title-bar {
+    margin: 0 0 0 10px;
+}
+
+.adsk-logo {
+    height: 40px;
+}
+
+.login-form {
+    margin-top: 60px;
+}
+
+.login-form .login-btn {
+    margin-left: 0;
+}
+
+.help-block {
+    font-size: 75%;
+    font-style: italic;
+    color: #ff0000;
+}
+
+.wrapper {
+    margin: 0 auto;
+    padding: 10px;
+    width: 98%;
+}
+
+.hidden {
+    display: none;
+}
+
+a.disabled {
+    color: #959595;
+}
+
+img.with-max-size {
+    max-width: 800px;
+    max-height: 600px;
+}
+
+img.avatar {
+    max-width: 60px;
+    max-height: 60px;
+}
+
+a.linked-img {
+    text-decoration: none;
+}
+
+.events-table img {
+    max-height: 80px;
+}
+
+#create-event-dialog {
+    width: 800px;
+}
+
+.upload-input {
+    width: 200px;
+}
+
+.upload-button {
+    margin-left: 5px;
+}
+
+.events-well {
+    position: relative;
+    margin: 25px 15px;
+    padding: 39px 19px 14px;
+    *padding-top: 19px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.events-well:after {
+    content: "Event Details";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    color: #9da0a4;
+    -webkit-border-radius: 4px 0 4px 0;
+    -moz-border-radius: 4px 0 4px 0;
+    border-radius: 4px 0 4px 0;
+}
+
+.event-info {
+    border: none;
+}
+
+.event-content {
+    margin: 30px 0;
+    font-size: 16px;
+}
+
+.event-category {
+    border-top: 1px solid #ebebeb;
+    padding: 10px 0 0;
+    color: #959595;
+    line-height: 28px;
+}
+
+.with-tags a {
+    display: inline-block;
+    margin: 0 7px 7px 0;
+    border: 1px solid #ebebeb;
+    padding: 2px;
+    color: #959595;
+    line-height: 1.5em;
+    transition: all 0.2s ease 0s;
+}
+
+.with-tags a:hover {
+    color: #fff;
+    background: #08c none repeat scroll 0% 0%;
+    border: 1px solid #08c;
+    text-decoration: none;
+}
+
+.side-bar {
+    margin-bottom: 35px;
+    padding: 21px 30px;
+}
+
+.side-bar .title {
+    position: relative;
+    margin-top: 0 0 21px 0;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #ebebeb;
+}

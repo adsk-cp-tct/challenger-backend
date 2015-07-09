@@ -1,0 +1,34 @@
+<article id="{{eventId}}" class="event-info">
+    <div class="event-head">
+        <h3 class="event-title"><a href="#">{{title}}</a></h1>
+            <h5 class="event-meta">
+                    <span class="author">Presenter：<a href="mailto:{{presenterEmail}}" class="linked-img">
+                        {{#if presenterLogo}}
+                        <img width="32" height="32" src="/images/{{presenterLogo}}"/>
+                        {{/if}}
+                        {{presenter}} ({{presenterTitle}})
+                    </a>
+                    </span> •
+                <time class="event-date" datetime="{{startTime}}" title="{{startTime}}">{{formatDate startTime 16}}
+                </time>
+                -
+                <time class="event-date" datetime="{{endTime}}" title="{{endTime}}">{{formatDate endTime 16}}</time>
+            </h5>
+    </div>
+    <div class="event-media">
+        <a href="#" class="linked-img">
+            {{#if thumbnail}}
+            <img class="media-object with-max-size" src="/images/{{thumbnail}}"/>
+            {{else}}
+            <img class="media-object" src="/assets/images/cover.png"/>
+            {{/if}}
+        </a>
+    </div>
+    <div class="event-content">
+        <p>{{description}}</p>
+    </div>
+    <footer class="event-category with-tags clearfix">
+        <a href="#">{{category}}</a>
+        <a href="#">{{registerPolicy}}</a>
+    </footer>
+</article>
