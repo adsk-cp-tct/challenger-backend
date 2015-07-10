@@ -30,7 +30,7 @@ object EventsController extends BaseAuthController {
           val eventList = Await.result(EventService.getEventList, 5.seconds)
           val ideaList = Await.result(IdeaService.getIdeaList(-1), 5.seconds)
 
-          Ok(views.html.event(eventList.toString())(ideaList.toString()))
+          Ok(views.html.event(eventList.toString().replace("\\", "\\\\"))(ideaList.toString().replace("\\", "\\\\")))
         }
       case _ => Redirect("/").withNewSession
     }
